@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h2>Valeurs du tableau</h2>
+
+    <ul>
+        {% for indice, valeur in tableau %}
+            <li>{{ indice ~ " : " ~ valeur }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Autre solution pour accéder aux valeurs d'un array associatif</h3>
+    <p>Je m'appelle {{ tableau["prenom"] }} {{ tableau.nom }} et j'ai {{ tableau.age }} ans.</p>
+    
+    <h2>Valeurs de l'objet</h2>
+    <p>Je m'appelle {{ objet.prenom }} {{ objet.nom }} et j'ai {{ objet.age }} ans.</p>
+{% endblock %}

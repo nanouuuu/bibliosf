@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="card-columns">
+    {% for livre in livres %}
+        <div class="card livre">
+            <h4 class="card-header bg-primary text-light">{{ livre.titre }}</h4>
+
+            <div class="row  couverture">
+                <div class="col-4 d-flex align-items-center">
+                    <img class="card-img p-1 miniature" src="/images/{{ livre.couverture }}" alt="pas de couverture">
+                </div>
+
+                <div class="col-8">
+                    <div class="card-body">
+                        <p class="card-text">De : {{ livre.auteur.identite }}</p>
+                        <p class="card-text">Genre : {{ livre.genresTexte }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <a href="" class="card-link"> 
+                    <i class="fa fa-book"></i> Voir plus 
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

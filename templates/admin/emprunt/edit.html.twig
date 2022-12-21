@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emprunt{% endblock %}
+
+{% block body %}
+    <h1>Emprunt</h1>
+
+    {{ include('admin/emprunt/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_admin_emprunt_index') }}">Retour à la liste</a>
+
+    {{ include('admin/emprunt/_delete_form.html.twig') }}
+{% endblock %}

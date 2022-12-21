@@ -1,0 +1,47 @@
+{# // EXERCICE
+- ajouter une nouvelle route nommée 'calcul' qui 
+prend 2 paramètres nommés, 'nb1' et 'nb2'.
+
+- il faut que les 2 paramètres soient constitués de chiffres
+
+- Affichez le résultat des 4 opérations pour ces 2 valeurs
+
+ex: nb1 = 5 et nb2 = 3
+
+	▪ 5 + 3 = 8
+    ▪ 5 - 3 = 2
+    ▪ 5 / 3 = 1.66666
+    ▪ 5 * 3 = 15
+    
+- Si nb2 est égal à 0, la division ne sera pas affichée; À la place vous affichez "Division par 0 impossible" #}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h1>Résultats du calcul</h1>
+
+<ul>    
+    <li>{{ nb1 }} + {{ nb2 }} = {{ nb1 + nb2}}</li>
+    <li>{{ nb1 }} - {{ nb2 }} = {{ nb1 - nb2}}</li>
+        {% if nb2 != 0 %}
+    <li>{{ nb1 }} / {{ nb2 }} = {{ nb1 / nb2}}</li>
+        {% else %}
+    <li>
+        <mark>Division par 0 impossible</mark>
+    </li>
+     {% endif %}
+    <li>{{ nb1 }} * {{ nb2 }} = {{ nb1 * nb2}}</li>   
+</ul>
+
+<hr>
+
+    <ul>    
+    <li>{{ nb1 }} + {{ nb2 }} = {{ nb1 + nb2}}</li>
+    <li>{{ nb1 }} - {{ nb2 }} = {{ nb1 - nb2}}</li>        
+    <li>{{ nb2 != 0 ? nb1 ~ " / " ~ nb2 ~ "=" ~ (nb1 / nb2) : "Division par 0 impossible" }}</li>
+    <li>{{ nb1 }} * {{ nb2 }} = {{ nb1 * nb2}}</li>   
+</ul>
+
+
+
+{% endblock %}

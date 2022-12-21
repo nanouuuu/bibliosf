@@ -1,5 +1,12 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    form_themes: ["bootstrap_4_layout.html.twig"]
+    # l'option 'date' permet de définir le format de date par défaut (ici, à la française) pour l'affichage des dates. Donc plus besoin de le spécifier à chaque fois entre les parenthèses date()
+    date:
+        format: d/m/Y
+    # l'option 'globals' permet de créer des variables globales aux fichiers twig (utilisées comme des constantes)
+    globals:
+        image_path: "/images/"
 
 when@test:
     twig:

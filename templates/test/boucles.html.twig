@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    <h1>Les boucles</h1>
+{% endblock %}
+
+{% block body %}
+
+    <h2>Afficher les 100 premiers chiffres</h2>
+       
+    {% for i in 1..100 %}
+        {{ i }},
+    {% endfor %}
+
+    <h2>Afficher l'alphabet</h2>
+       
+    {% for i in "a".."z" %}
+        {{ i }},
+    {% endfor %}
+
+    <hr>
+
+    <p>La 3ème valeur du tableau {{ table[2] }}</p>
+    
+    <p>La taille du tableau est {{ table|length }}</p>
+    <p>Un <code>filtre twig</code> est une fonction dont la syntaxe est <code>&#x7B; valeur|filtre &#x7D;</code></p>
+    <p>Le filtre s'applique sur la valeur qui est placée avant la |</p>
+
+    <p>EXO : afficher toutes les valeurs de la variable 'table' dans une balise ul<p>
+    
+    <ul>        
+        {% for i in 0..table|length-1 %}
+        <li>{{i}} : {{ table[i] }},</li>
+        {% endfor %}        
+    </ul>
+    <hr>
+    <p>L'équivalent de la boucle php foreach  dans TWIG est la balise for avec une syntaxe différente :
+    foreach&#40;$tableau as $valeur&#41;  &#x7B; ... &#x7D;</p>
+    {# L'équivalent de la boucle PHP FOREACH dans TWIG est la balise for
+        avec une syntaxe différete
+        
+    foreach($tableau as $valeur) { ... }                 {% for valeur in tableau %} ... {% endfor %}
+
+    foreach($tableau as $cle => $valeur) { ...}          {% for cle, valeur in tableau %} ... {% endfor %}
+    #}
+        
+    <ul>
+        {% for valeur in table %}
+        <li>{{ valeur }},</li>
+        {% endfor %} 
+    </ul>
+
+    <ul>
+        {% for cle, valeur in table %}
+            <li>{{ cle }} : {{ valeur }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

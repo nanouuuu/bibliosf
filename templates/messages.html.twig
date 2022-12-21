@@ -1,0 +1,12 @@
+{# Les messages flash peuvent être récupérés avec la variable 'app'
+app.flashes est un array associatif. Les indices sont les types des messages, choisis quand vosu avez utilisé la fonction 'addFlash' - cf exemple dans fichier 'src/Controller/Admin/GenreController'-.
+Chaque valeur est un array qui peut contenir plusieurs messages. #}
+
+{% for type, messages in app.flashes %}
+{#  après le for, pour un tableau associatif on récupère le type (type) et l'indice(messages), dans la 2e boucle for, le type est msg, l'indice messages #}
+    {% for msg in messages %}
+    <div class="alert alert-{{ type }}">
+        {{ msg }}
+    </div>
+    {% endfor %}
+{% endfor %}

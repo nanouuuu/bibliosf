@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonne index{% endblock %}
+
+{% block body %}
+{% block titreh1 %}<h1>Index abonné</h1>{% endblock %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pseudo</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonne in abonnes %}
+            <tr>
+                <td>{{ abonne.id }}</td>
+                <td>{{ abonne.pseudo }}</td>
+                <td>{% for r in abonne.roles %}                            
+                                {% if r == 'ROLE_USER' %}
+                                    Abonné
+                                {% elseif r == 'ROLE_LECTEUR' %}
+                                    Lecteur                                   
+                                {% elseif r == 'ROLE_BIBLIO' %}
+                                    Bibliothécaire                                   
+                                {% elseif r == 'ROLE_ADMIN' %}
+                                    Directeur
+                                {% endif %}                                                
+                            {% if not loop.last %},{% endif %}
+                    {% endfor %}
+                </td>
+                <td>*****</td>
+                <td>{{ abonne.nom }}</td>
+                <td>{{ abonne.prenom }}</td>
+                <td>
+                    <a href="{{ path('app_admin_abonne_show', {'id': abonne.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_abonne_edit', {'id': abonne.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_abonne_new') }}">Créer</a>
+{% endblock %}
